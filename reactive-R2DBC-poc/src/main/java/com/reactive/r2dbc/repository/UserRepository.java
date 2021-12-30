@@ -1,2 +1,11 @@
-package com.reactive.r2dbc.repository;public class UserRepository {
+package com.reactive.r2dbc.repository;
+
+import com.reactive.r2dbc.model.User;
+import org.springframework.data.r2dbc.repository.Query;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Flux;
+
+public interface UserRepository extends ReactiveCrudRepository<User,Long> {
+    @Query("select * from users where age >= $1")
+    Flux<User> findByAge(int age);
 }
