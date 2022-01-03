@@ -1,5 +1,6 @@
 package com.reactive.r2dbc.service;
 
+import com.reactive.r2dbc.model.User;
 import com.reactive.r2dbc.repository.DepartmentRepository;
 import com.reactive.r2dbc.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -24,5 +25,7 @@ public class UserService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    
+    public Mono<User> createUser(User user){
+        return userRepository.save(user);
+    }
 }

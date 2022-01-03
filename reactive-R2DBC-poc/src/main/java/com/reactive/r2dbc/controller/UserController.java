@@ -1,5 +1,6 @@
 package com.reactive.r2dbc.controller;
 
+import com.reactive.r2dbc.model.User;
 import com.reactive.r2dbc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,5 +16,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mono<User> create(@RequestBody User user){
+        return userService.createUser(user);
+    }
 
 }
