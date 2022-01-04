@@ -28,4 +28,11 @@ public class UserService {
     public Mono<User> createUser(User user){
         return userRepository.save(user);
     }
+
+    public Flux<User> getAllUsers(){
+        return userRepository.findAll();
+    }
+    public Flux<User> findUsersByAge(int age){
+        return userRepository.findByAge(age);
+    }
 }
